@@ -50,7 +50,7 @@ const Form = () => {
 
   const register = async (values, onSubmitProps) => {
     const savedUserResponse = await fetch(
-      "http://localhost:5001/auth/register",
+      "https://auf-maintenance.onrender.com/auth/register",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -67,11 +67,14 @@ const Form = () => {
   };
 
   const handelLogin = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:5001/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
+    const loggedInResponse = await fetch(
+      "https://auf-maintenance.onrender.com/auth/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }
+    );
     const loggedIn = await loggedInResponse.json();
     if (loggedIn) {
       dispatch(
