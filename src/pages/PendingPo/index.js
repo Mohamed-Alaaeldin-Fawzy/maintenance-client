@@ -20,7 +20,7 @@ const PendingPo = () => {
         </IconButton>
         <Header
           title="CMs waiting for POs "
-          subtitle="Omar Mostafa please harry up"
+          subtitle="Omar Mostafa Stop Slaking"
         />
       </Box>
       {data || !isLoading ? (

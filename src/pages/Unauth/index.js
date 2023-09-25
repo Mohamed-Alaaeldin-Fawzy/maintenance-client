@@ -12,7 +12,10 @@ const Unauth = () => {
         background: ` url(${img}) no-repeat right bottom /contain;`,
       }}
     >
-      <Header title="UnAuthorized" subtitle="Please Login"></Header>
+      <Header
+        title="UnAuthorized"
+        subtitle="Who are you?! you are not suppose to be here"
+      ></Header>
     </Box>
   );
 };

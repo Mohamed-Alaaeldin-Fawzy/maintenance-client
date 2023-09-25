@@ -4,7 +4,7 @@ const token = localStorage.getItem("token");
 
 const initialState = {
   mode: "dark",
-  user: {},
+  user: { _id: "", name: "", role: "", department: "" },
   token: token || null,
 };
 

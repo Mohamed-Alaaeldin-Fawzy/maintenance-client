@@ -41,15 +41,15 @@ const AddCm = () => {
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
-      width={!isNoneMobile ? "100%" : "60%"}
+      width={!isNoneMobile ? "100%" : "70%"}
       sx={{
         background: theme.palette.background.alt,
         color: theme.palette.primary[600],
       }}
     >
       <Header
-        title="Add Maintenance Order"
-        subtitle="Production Eng can Add Maintenance order here"
+        title="Add Maintenance Request"
+        subtitle="Production Eng can Add Maintenance Request here"
       />
       <Box
         component="form"
@@ -57,7 +57,7 @@ const AddCm = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        width={!isNoneMobile ? "100%" : "60%"}
+        width={!isNoneMobile ? "100%" : "90%"}
         height="100%"
         m="1.5rem auto"
         flexDirection="column"

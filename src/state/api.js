@@ -18,7 +18,7 @@ export const api = createApi({
     }),
     getSingleCM: build.query({
       query: (id) => ({
-        query: `client/CMs/${id}`,
+        url: `client/CMs/${id}`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json",

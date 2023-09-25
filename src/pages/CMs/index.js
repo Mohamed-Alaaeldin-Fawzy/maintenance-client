@@ -27,7 +27,7 @@ const CMs = () => {
             }}
           >
             {data &&
-              data.CMs.map((cm) => (
+              data.CMs.filter((cm) => cm.isClosed !== true).map((cm) => (
                 <CM
                   key={cm._id}
                   name={cm.name}
