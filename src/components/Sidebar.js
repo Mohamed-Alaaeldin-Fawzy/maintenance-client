@@ -44,12 +44,12 @@ const Sidebar = ({
     },
 
     {
-      text: "Make Maintenance Order",
+      text: "Make Maintenance Request",
       path: "add_order",
       icon: <AlarmAddOutlined />,
     },
     {
-      text: "All Maintenance Orders",
+      text: "All Maintenance Request",
       path: "CMs",
       icon: <ReceiptLongOutlined />,
     },

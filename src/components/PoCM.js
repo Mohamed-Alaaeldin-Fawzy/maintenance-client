@@ -162,7 +162,7 @@ const PoCM = ({
         >
           <FlexBetween>
             <Box component="h2" color={theme.palette.primary[100]}>
-              PO Number : {sparePartsRequired}
+              PO Date : {sparePartsRequired}
             </Box>
             {requestForPoCompleted && (
               <EmojiFlagsOutlinedIcon

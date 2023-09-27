@@ -21,11 +21,19 @@ function App() {
   return (
     <div className="app">
       <ThemeProvider theme={theme}>
-        {console.log(role)}
         <CssBaseline />
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/CMs" replace />} />
+            <Route
+              path="/"
+              element={
+                role === "production" ? (
+                  <Navigate to="/CMs" replace />
+                ) : (
+                  <Navigate to="/open_CMs" replace />
+                )
+              }
+            />
             <Route path="/unauth" element={<Unauth />} />
             <Route
               path="/CMs"

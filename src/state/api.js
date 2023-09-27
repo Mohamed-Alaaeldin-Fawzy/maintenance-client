@@ -94,7 +94,7 @@ export const api = createApi({
     }),
     requestForClose: build.mutation({
       query: (id) => ({
-        url: `/client//CMs/request_for_close/${id}`,
+        url: `/client/CMs/request_for_close/${id}`,
         method: "PUT",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

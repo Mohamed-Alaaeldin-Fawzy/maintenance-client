@@ -57,7 +57,6 @@ const ManageCM = () => {
         <IconButton onClick={() => navigate(-1)} sx={{ width: "4rem" }}>
           <ChevronLeft sx={{ fontSize: "1.8rem" }} />
         </IconButton>
-        {console.log(data)}
         <Header
           title="Manage CM"
           subtitle="Maintenance Eng Can Manage CM here"
@@ -162,7 +161,6 @@ const ManageCM = () => {
               width="100%"
             >
               <Button
-                type="submit"
                 id="assign"
                 onClick={handelCloseCM}
                 variant="contained"
