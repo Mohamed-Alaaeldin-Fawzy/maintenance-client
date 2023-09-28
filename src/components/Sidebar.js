@@ -130,8 +130,8 @@ const Sidebar = ({
                         navigate(`/${path}`);
                         setActive(path);
                         isNoneMobile
-                          ? setIsSidebarOpen(true)
-                          : setIsSidebarOpen(false);
+                          ? setIsSidebarOpen(false)
+                          : setIsSidebarOpen(true);
                       }}
                       sx={{
                         backgroundColor:
