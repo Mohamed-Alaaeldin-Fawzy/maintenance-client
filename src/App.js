@@ -57,7 +57,9 @@ function App() {
             />
             <Route
               path="/open_CMs"
-              element={isAuth ? <Breakdowns /> : <Unauth />}
+              element={
+                isAuth && role !== "production" ? <Breakdowns /> : <Unauth />
+              }
             />
             <Route
               exact

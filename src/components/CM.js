@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import EmojiFlagsOutlinedIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import { useCompleteCMMutation } from "state/api";
-
+import { options, formatDate } from "utils/dateHelpers";
 const CM = ({
   name,
   description,
@@ -21,18 +21,7 @@ const CM = ({
   const handelCompleteCM = () => {
     completeCM(id);
   };
-  const formatDate = (date, options) => {
-    return new Date(date).toLocaleString(undefined, options);
-  };
-  const options = {
-    weekday: "short",
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  };
+
   return (
     <Card
       sx={{

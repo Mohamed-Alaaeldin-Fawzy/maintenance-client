@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useGetCMsQuery } from "state/api";
 import {
   Box,
-  useMediaQuery,
   Card,
   useTheme,
   IconButton,
@@ -12,20 +11,20 @@ import {
   CardContent,
 } from "@mui/material";
 import { ChevronLeft } from "@mui/icons-material";
+import { calculateDifference } from "utils/dateHelpers";
 
 const ClosedCMs = () => {
-  const isNoneMobile = useMediaQuery("(min-width:1400px)");
   const { data, isLoading } = useGetCMsQuery();
   const theme = useTheme();
   const navigate = useNavigate();
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Box display="flex" gap="1.5rem" m="0 3.5rem">
+      <Box display="flex" gap="1.5rem" m="2rem 0rem">
         <IconButton onClick={() => navigate(-1)} sx={{ width: "4rem" }}>
           <ChevronLeft sx={{ fontSize: "1.8rem" }} />
         </IconButton>
-        {console.log(data)}
+
         <Header
           title="Completed CMs"
           subtitle="Here is a list of all completed CMs"
@@ -93,6 +92,10 @@ const ClosedCMs = () => {
                       Spare Parts: {cm.sparePartsUsed}
                     </Typography>
                   )}
+                  <Typography>
+                    time To repair :{" "}
+                    {calculateDifference(cm.updatedAt, cm.createdAt)} Hours
+                  </Typography>
                 </CardContent>
               </Card>
             ))}

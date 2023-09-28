@@ -22,7 +22,6 @@ import EmojiFlagsOutlinedIcon from "@mui/icons-material/EmojiFlagsOutlined";
 
 const OpenCMs = () => {
   const isNoneMobile = useMediaQuery("(min-width:1450px)");
-  const extraSmallScreens = useMediaQuery("(min-width:550px)");
   const { data, isLoading } = useGetCMsQuery();
   const [requirePO] = useRequirePoMutation();
   const [requestForClose] = useRequestForCloseMutation();
@@ -31,15 +30,11 @@ const OpenCMs = () => {
 
   return (
     <Box>
-      <Box display="flex" gap="1.5rem" m="0 3.5rem">
+      <Box display="flex" gap="1.5rem" mt="2rem">
         <IconButton onClick={() => navigate(-1)} sx={{ width: "4rem" }}>
           <ChevronLeft sx={{ fontSize: "1.8rem" }} />
         </IconButton>
-        {console.log(data)}
-        <Header
-          title="Uncompleted CMs "
-          subtitle="here we can handel the CM "
-        />
+        <Header title="Uncompleted CMs" subtitle="here we can handel the CM " />
       </Box>
       {data || !isLoading ? (
         <Box

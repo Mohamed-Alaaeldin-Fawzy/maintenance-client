@@ -10,7 +10,7 @@ const CMs = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="CMs" subtitle="list of all CMs" />
+      <Header title="Breakdowns" subtitle="list of all uncompleted CMs" />
       {data || !isLoading ? (
         <>
           <Box
@@ -45,7 +45,6 @@ const CMs = () => {
                   requestForClose={cm.requestForClose}
                 />
               ))}
-            {console.log(data)}
           </Box>
         </>
       ) : (

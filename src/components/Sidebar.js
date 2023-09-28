@@ -42,7 +42,6 @@ const Sidebar = ({
       path: "production",
       icon: null,
     },
-
     {
       text: "Make Maintenance Request",
       path: "add_order",
@@ -130,6 +129,9 @@ const Sidebar = ({
                       onClick={() => {
                         navigate(`/${path}`);
                         setActive(path);
+                        isNoneMobile
+                          ? setIsSidebarOpen(true)
+                          : setIsSidebarOpen(false);
                       }}
                       sx={{
                         backgroundColor:
