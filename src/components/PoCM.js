@@ -18,6 +18,8 @@ import {
 import EmojiFlagsOutlinedIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import FlexBetween from "./FlexBetween";
 import { formatDate, options } from "utils/dateHelpers";
+import { useSelector } from "react-redux";
+
 const PoCM = ({
   name,
   department,
@@ -28,6 +30,7 @@ const PoCM = ({
   id,
   requestForPoCompleted,
 }) => {
+  const role = useSelector((state) => state.global.user.role);
   const isNoneMobile = useMediaQuery("(min-width:1400px)");
   const theme = useTheme();
   const [requiredPO, setRequiredPO] = useState("");
@@ -177,34 +180,37 @@ const PoCM = ({
             flexDirection={isNoneMobile ? "row" : "column"}
             width="100%"
           >
-            <Button
-              variant="contained"
-              onClick={() => {
-                isPoCompleted({ id, isPoFullFilled: true });
-              }}
-              sx={{
-                color: theme.palette.secondary[300],
-                background: theme.palette.primary[600],
-                marginTop: "1.5rem",
-                padding: "1rem 3rem",
-              }}
-            >
-              PO received
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => {
-                requestForPoReceived(id);
-              }}
-              sx={{
-                color: theme.palette.secondary[300],
-                background: theme.palette.primary[600],
-                marginTop: "1.5rem",
-                padding: "1rem 3rem",
-              }}
-            >
-              Request For Po Close
-            </Button>
+            {role === "maintenance" ? (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  isPoCompleted({ id, isPoFullFilled: true });
+                }}
+                sx={{
+                  color: theme.palette.secondary[300],
+                  background: theme.palette.primary[600],
+                  marginTop: "1.5rem",
+                  padding: "1rem 3rem",
+                }}
+              >
+                PO received
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  requestForPoReceived(id);
+                }}
+                sx={{
+                  color: theme.palette.secondary[300],
+                  background: theme.palette.primary[600],
+                  marginTop: "1.5rem",
+                  padding: "1rem 3rem",
+                }}
+              >
+                Request For Po Close
+              </Button>
+            )}
           </Box>
         </Box>
       )}

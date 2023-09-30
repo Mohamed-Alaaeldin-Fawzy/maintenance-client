@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import Header from "components/Header";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  useGetSingleCMQuery,
-  useUpdateCMMutation,
-  useRequirePoMutation,
-} from "state/api";
+import { useGetSingleCMQuery, useUpdateCMMutation } from "state/api";
 import {
   Box,
   TextField,
