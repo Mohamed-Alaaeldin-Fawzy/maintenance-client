@@ -3,9 +3,9 @@ import Header from "components/Header";
 import { useNavigate } from "react-router-dom";
 import { useGetCMsQuery } from "state/api";
 import { Box, IconButton } from "@mui/material";
-
 import { ChevronLeft } from "@mui/icons-material";
 import PoCM from "components/PoCM";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const PendingPo = () => {
   const { data, isLoading } = useGetCMsQuery();
@@ -40,8 +40,9 @@ const PendingPo = () => {
             ))}
         </>
       ) : (
-        // </Card>
-        <>Loading ...</>
+        <Box sx={{ width: "100%", margin: "3rem 0" }}>
+          <LinearProgress />
+        </Box>
       )}{" "}
     </Box>
   );

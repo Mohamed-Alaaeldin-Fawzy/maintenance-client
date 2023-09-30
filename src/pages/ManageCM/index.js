@@ -29,9 +29,9 @@ const ManageCM = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetSingleCMQuery(id);
   const [updateCM] = useUpdateCMMutation();
-  const [requirePo] = useRequirePoMutation();
   const theme = useTheme();
   const navigate = useNavigate();
+
   const handelCloseCM = (e) => {
     updateCM({
       responsible,
@@ -42,15 +42,14 @@ const ManageCM = () => {
     });
     navigate(-1);
   };
-  const handelRequestPo = () => {
-    requirePo({ id, PO: true });
-  };
+
   const handleChange = (e) => {
     e.target.name === "responsible" && setResponsible(e.target.value);
     e.target.name === "accountable" && setAccountable(e.target.value);
     e.target.name === "technical" && setTechnical(e.target.value);
     e.target.name === "spareParts" && setSpareParts(e.target.value);
   };
+
   return (
     <Box m="1.5rem 2.5rem">
       <Box display="flex" gap="1.5rem">
@@ -163,7 +162,7 @@ const ManageCM = () => {
               <Button
                 id="assign"
                 onClick={handelCloseCM}
-                variant="contained"
+                variant="outlined"
                 sx={{
                   color: "#454428",
                   background: "#D1E7DD",
@@ -172,18 +171,6 @@ const ManageCM = () => {
                 }}
               >
                 Update CM
-              </Button>
-              <Button
-                variant="contained"
-                onClick={handelRequestPo}
-                sx={{
-                  color: theme.palette.secondary[100],
-                  background: theme.palette.primary[400],
-                  marginTop: "1.5rem",
-                  padding: "1rem 3rem",
-                }}
-              >
-                Require PO
               </Button>
             </Box>
           </Box>

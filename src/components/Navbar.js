@@ -23,13 +23,16 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { setLogout } from "state";
+
 const Navbar = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
+
   const handelClick = (e) => setAnchorEl(e.currentTarget);
+
   const handelClose = (e) => {
     dispatch(setLogout());
     setAnchorEl(null);

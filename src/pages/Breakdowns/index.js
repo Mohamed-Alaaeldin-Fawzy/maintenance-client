@@ -11,14 +11,13 @@ import {
   Card,
   useTheme,
   IconButton,
-  Typography,
-  CardContent,
   Button,
   useMediaQuery,
 } from "@mui/material";
 import { ChevronLeft } from "@mui/icons-material";
-import FlexBetween from "components/FlexBetween";
 import EmojiFlagsOutlinedIcon from "@mui/icons-material/EmojiFlagsOutlined";
+import BreakDown from "components/BreakDown";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const OpenCMs = () => {
   const isNoneMobile = useMediaQuery("(min-width:1450px)");
@@ -63,100 +62,70 @@ const OpenCMs = () => {
                   }}
                   key={cm._id}
                 >
-                  <CardContent>
-                    <FlexBetween>
-                      <Typography
-                        sx={{ fontSize: 18, fontWeight: "bold" }}
-                        color="#ffe8e9"
-                        gutterBottom
-                      >
-                        {cm.department}
-                      </Typography>
-                      {cm.requestForClose && (
-                        <EmojiFlagsOutlinedIcon
-                          sx={{ fontSize: "40px", color: "#000" }}
-                        />
-                      )}
-                    </FlexBetween>
-                    <Typography
-                      variant="h5"
-                      component="div"
-                      m="0.8rem 0"
-                      color="#ffe8e9"
-                    >
-                      {cm.name}
-                    </Typography>
-                    <Typography variant="body2" m="0.8rem 0" color="#ffe8e9">
-                      {cm.description}
-                    </Typography>
-                    {cm.responsible && (
-                      <Typography variant="body2" m="0.8rem 0" color="#ffe8e9">
-                        Responsible: {cm.responsible}
-                      </Typography>
-                    )}
-                    {cm.accountable && (
-                      <Typography variant="body2" m="0.8rem 0" color="#ffe8e9">
-                        Accountable : {cm.accountable}
-                      </Typography>
-                    )}
-                    {cm.technicalDescription && (
-                      <Typography variant="body2" m="0.8rem 0" color="#ffe8e9">
-                        Technical Description: {cm.technicalDescription}
-                      </Typography>
-                    )}
-                    {cm.sparePartsUsed && (
-                      <Typography variant="body2" m="0.8rem 0" color="#ffe8e9">
-                        Spare Parts: {cm.sparePartsUsed}
-                      </Typography>
-                    )}
-
-                    <Button
-                      variant="contained"
-                      size="large"
-                      sx={{
-                        color: "#f1f1f1",
-                        background: theme.palette.primary[500],
-                        margin: "0.5rem",
-                      }}
-                      onClick={() => navigate(`/CMs/${cm._id}`)}
-                    >
-                      Update CM
-                    </Button>
-                    <Button
-                      variant="contained"
-                      size="large"
-                      sx={{
-                        color: "#f1f1f1",
-                        background: theme.palette.warning[600],
-                        margin: "0.5rem",
-                      }}
-                      onClick={() => {
-                        requirePO({ id: cm._id, PO: true });
-                      }}
-                    >
-                      Require PO
-                    </Button>
-                    <Button
-                      variant="contained"
-                      size="large"
-                      sx={{
-                        color: "#f1f1f1",
-                        background: "#28A745",
-                        margin: "0.5rem",
-                      }}
-                      onClick={() => {
-                        requestForClose(cm._id);
-                      }}
-                    >
-                      Request For Close
-                    </Button>
-                  </CardContent>
+                  {cm.requestForClose && (
+                    <EmojiFlagsOutlinedIcon
+                      sx={{ fontSize: "40px", color: "#000", float: "right" }}
+                    />
+                  )}
+                  <BreakDown
+                    name={cm.name}
+                    description={cm.description}
+                    responsible={cm.responsible}
+                    department={cm.department}
+                    accountable={cm.accountable}
+                    technicalDescription={cm.technicalDescription}
+                    sparePartsUsed={cm.sparePartsUsed}
+                    createdAt={cm.createdAt}
+                    updatedAt={cm.updatedAt}
+                  />
+                  <Button
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      color: "#f1f1f1",
+                      background: theme.palette.primary[500],
+                      margin: "0.5rem",
+                    }}
+                    onClick={() => navigate(`/CMs/${cm._id}`)}
+                  >
+                    Update CM
+                  </Button>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      color: "#f1f1f1",
+                      background: theme.palette.warning[600],
+                      margin: "0.5rem",
+                    }}
+                    onClick={() => {
+                      requirePO({ id: cm._id, PO: true });
+                    }}
+                  >
+                    Require PO
+                  </Button>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      color: "#f1f1f1",
+                      background: "#28A745",
+                      margin: "0.5rem",
+                    }}
+                    onClick={() => {
+                      requestForClose(cm._id);
+                    }}
+                  >
+                    Request For Close
+                  </Button>
                 </Card>
               )
             )}
         </Box>
       ) : (
-        <>Loading ...</>
+        <Box sx={{ width: "100%", margin: "3rem 0" }}>
+          <LinearProgress />
+        </Box>
       )}{" "}
     </Box>
   );

@@ -76,9 +76,11 @@ const Sidebar = ({
       icon: <CalendarMonthOutlined />,
     },
   ];
+
   useEffect(() => {
     setActive(pathname.substring(1));
   }, [pathname]);
+
   return (
     <Box component="nav">
       {isSidebarOpen && (
@@ -130,8 +132,8 @@ const Sidebar = ({
                         navigate(`/${path}`);
                         setActive(path);
                         isNoneMobile
-                          ? setIsSidebarOpen(false)
-                          : setIsSidebarOpen(true);
+                          ? setIsSidebarOpen(true)
+                          : setIsSidebarOpen(false);
                       }}
                       sx={{
                         backgroundColor:

@@ -2,16 +2,10 @@ import React from "react";
 import Header from "components/Header";
 import { useNavigate } from "react-router-dom";
 import { useGetCMsQuery } from "state/api";
-import {
-  Box,
-  Card,
-  useTheme,
-  IconButton,
-  Typography,
-  CardContent,
-} from "@mui/material";
+import { Box, Card, useTheme, IconButton } from "@mui/material";
 import { ChevronLeft } from "@mui/icons-material";
-import { calculateDifference } from "utils/dateHelpers";
+import BreakDown from "components/BreakDown";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const ClosedCMs = () => {
   const { data, isLoading } = useGetCMsQuery();
@@ -24,7 +18,6 @@ const ClosedCMs = () => {
         <IconButton onClick={() => navigate(-1)} sx={{ width: "4rem" }}>
           <ChevronLeft sx={{ fontSize: "1.8rem" }} />
         </IconButton>
-
         <Header
           title="Completed CMs"
           subtitle="Here is a list of all completed CMs"
@@ -53,55 +46,24 @@ const ClosedCMs = () => {
                 }}
                 key={cm._id}
               >
-                <CardContent>
-                  <Typography
-                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                    color="#e8ffec"
-                    gutterBottom
-                  >
-                    {cm.department}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    component="div"
-                    m="0.8rem 0"
-                    color="#e8ffec"
-                  >
-                    {cm.name}
-                  </Typography>
-                  <Typography variant="body2" m="0.8rem 0" color="#e8ffec">
-                    {cm.description}
-                  </Typography>
-                  {cm.responsible && (
-                    <Typography variant="body2" m="0.8rem 0" color="#e8ffec">
-                      Responsible: {cm.responsible}
-                    </Typography>
-                  )}
-                  {cm.accountable && (
-                    <Typography variant="body2" m="0.8rem 0" color="#e8ffec">
-                      Accountable : {cm.accountable}
-                    </Typography>
-                  )}
-                  {cm.technicalDescription && (
-                    <Typography variant="body2" m="0.8rem 0" color="#e8ffec">
-                      Technical Description: {cm.technicalDescription}
-                    </Typography>
-                  )}
-                  {cm.sparePartsUsed && (
-                    <Typography variant="body2" m="0.8rem 0" color="#e8ffec">
-                      Spare Parts: {cm.sparePartsUsed}
-                    </Typography>
-                  )}
-                  <Typography>
-                    time To repair :{" "}
-                    {calculateDifference(cm.updatedAt, cm.createdAt)} Hours
-                  </Typography>
-                </CardContent>
+                <BreakDown
+                  name={cm.name}
+                  description={cm.description}
+                  responsible={cm.responsible}
+                  department={cm.department}
+                  accountable={cm.accountable}
+                  technicalDescription={cm.technicalDescription}
+                  sparePartsUsed={cm.sparePartsUsed}
+                  createdAt={cm.createdAt}
+                  updatedAt={cm.updatedAt}
+                />
               </Card>
             ))}
         </Card>
       ) : (
-        <>Loading ...</>
+        <Box sx={{ width: "100%", margin: "3rem 0" }}>
+          <LinearProgress />
+        </Box>
       )}{" "}
     </Box>
   );

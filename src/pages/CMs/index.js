@@ -3,6 +3,7 @@ import { Box, useMediaQuery } from "@mui/material";
 import Header from "components/Header";
 import { useGetCMsQuery } from "state/api";
 import CM from "components/CM";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const CMs = () => {
   const isNoneMobile = useMediaQuery("(min-width:1450px)");
@@ -48,7 +49,9 @@ const CMs = () => {
           </Box>
         </>
       ) : (
-        <>Loading</>
+        <Box sx={{ width: "100%", margin: "3rem 0" }}>
+          <LinearProgress />
+        </Box>
       )}
     </Box>
   );

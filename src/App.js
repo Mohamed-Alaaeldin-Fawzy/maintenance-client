@@ -18,6 +18,7 @@ function App() {
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   const isAuth = useSelector((state) => state.global.token);
   const role = useSelector((state) => state.global.user.role);
+
   return (
     <div className="app">
       <ThemeProvider theme={theme}>

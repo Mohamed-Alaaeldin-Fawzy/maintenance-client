@@ -22,17 +22,21 @@ const AddCm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const theme = useTheme();
+
   const handleChange = (e) => {
     e.target.name === "name" && setName(e.target.value);
     e.target.name === "description" && setDescription(e.target.value);
     e.target.name === "department" && setDepartment(e.target.value);
   };
+
   const navigate = useNavigate();
+
   const handelSubmit = (e) => {
     e.preventDefault();
     createCM({ name, department, description });
     navigate("/CMs");
   };
+
   return (
     <Box
       m="3.5rem auto"

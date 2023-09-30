@@ -17,7 +17,7 @@ import {
 } from "state/api";
 import EmojiFlagsOutlinedIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import FlexBetween from "./FlexBetween";
-
+import { formatDate, options } from "utils/dateHelpers";
 const PoCM = ({
   name,
   department,
@@ -28,9 +28,6 @@ const PoCM = ({
   id,
   requestForPoCompleted,
 }) => {
-  const formatDate = (date, options) => {
-    return new Date(date).toLocaleString(undefined, options);
-  };
   const isNoneMobile = useMediaQuery("(min-width:1400px)");
   const theme = useTheme();
   const [requiredPO, setRequiredPO] = useState("");
@@ -171,16 +168,7 @@ const PoCM = ({
             )}
           </FlexBetween>
           <Box component="h4" color={theme.palette.primary[100]}>
-            issued At :{" "}
-            {formatDate(issueDate, {
-              weekday: "short",
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-              hour12: true,
-            })}
+            issued At : {formatDate(issueDate, options)}
           </Box>
           <Box
             display="flex"

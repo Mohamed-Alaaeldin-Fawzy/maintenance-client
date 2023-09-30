@@ -13,11 +13,13 @@ const Layout = () => {
   const { data, isLoading } = useGetUserQuery();
   const user = useSelector((state) => state.global.user);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (data !== undefined) {
       dispatch(setUser({ user: data.user }));
     }
   }, [data, dispatch]);
+
   return (
     <Box display={isNoneMobile ? "flex" : "block"} width="100%" height="100%">
       {!isLoading && (
